@@ -141,6 +141,8 @@
     <Content Include="App\deferred\deferred.html" />
     <Content Include="App\deferred\deferred.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\resolvingDeferreds\resolvingDeferreds.html" />
+    <Content Include="App\resolvingDeferreds\resolvingDeferreds.js" />
     <Content Include="App\viewmodels\flickr.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\welcome.js" />

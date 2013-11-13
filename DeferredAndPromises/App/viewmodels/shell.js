@@ -9,7 +9,8 @@
         activate: function () {
             router.map([
                 { route: '', title:'Welcome', moduleId: 'viewmodels/welcome', nav: true },
-                { route: 'deferred', moduleId: 'deferred/deferred', nav: true }
+                { route: 'deferred', moduleId: 'deferred/deferred', nav: true },
+                { route: 'resolvingDeferreds', moduleId: 'resolvingDeferreds/resolvingDeferreds', nav: true }
             ]).buildNavigationModel();
             
             return router.activate();

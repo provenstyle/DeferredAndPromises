@@ -1,0 +1,17 @@
+﻿<div>
+   <h2>Add Event Handlers to the Deferred</h2>
+   <div><button data-bind="click: addDone">Add Done</button></div>
+   <div><button data-bind="click: addFail">Add Fail</button></div>
+   <div><button data-bind="click: addAlways">Add Always</button></div>
+   
+   <h2>Simulate completing and action</h2>
+   <div><button data-bind="click: resolve">Resolve the Deferred</button></div>
+   <div><button data-bind="click: reject">Reject the Deferred</button></div>
+   
+
+   
+   <h2>Messages</h2>
+   <ul data-bind="foreach: messages">
+      <li data-bind="text: $data"></li>
+   </ul>
+</div>
