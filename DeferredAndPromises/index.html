@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script src="Scripts/jquery-1.8.2.js"></script>
+<script src="Scripts/knockout-2.2.0.js"></script>
+<head>
+   <title>Deferred</title>
+</head>
+<body>
+
+   <div>
+      <button data-bind="click: resolve">Resolve</button>
+   </div>
+
+   <div>
+      <button data-bind="click: reject">Reject</button>
+   </div>
+   
+   <div>
+      <button data-bind="click: addAnotherDoneCallback">Add Another Done</button>
+   </div>
+   
+   <div>
+      <button data-bind="click: addAnotherFailCallback">Add Another Fail</button>
+   </div>
+
+   <ul data-bind="foreach: messages">
+      <li data-bind="text: $data"></li>
+   </ul>
+
+   <script>
+      $(function () {
+
+         var vm = function () {
+
+            var messages = ko.observableArray(),
+                addMessage = function (message) {
+                   messages.push(message);
+                };
+
+            var def = $.Deferred(),
+                resolve = function () {
+                   def.resolve();
+                },
+               reject = function () {
+                  def.reject();
+               };
+
+            def.done(function() {
+                  addMessage('done');
+               })
+               .fail(function() {
+                  addMessage('fail');
+               })
+               .always(function() {
+                  addMessage('always');
+
+               })
+               .progress(function() {
+                  addMessage('progress');
+               });
+
+            var addAnotherDoneCallback = function() {
+                     def.done(function() {
+                        addMessage('Adding another done callback');
+                     });
+               },
+               addAnotherFailCallback = function () {
+                  def.fail(function () {
+                     addMessage('Adding another fail callback');
+                  });
+               };
+
+            return {
+               messages: messages,
+               resolve: resolve,
+               reject: reject,
+               addAnotherDoneCallback: addAnotherDoneCallback,
+               addAnotherFailCallback: addAnotherFailCallback
+            };
+         };
+
+         ko.applyBindings(vm());
+
+      });
+   </script>
+</body>
+</html>
